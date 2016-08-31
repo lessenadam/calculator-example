@@ -2,6 +2,23 @@
   width: 400px;
 }
 
+.display {
+  background-color: black;
+  color: white;
+  padding-right: 20px;
+  height: 100px;
+}
+
+#input-display {
+  text-align: right;
+  font-size: 2em;
+  border-bottom:none;
+  box-shadow:none;
+  margin-bottom: 0;
+  height: 80px;
+  padding-top: 20px;
+}
+
 td {
   font-size: 2.8em; /* 39.2/14 = 2.8em */
   height: 100px;

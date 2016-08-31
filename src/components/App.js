@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ButtonContainer from './ButtonContainer';
+import InputBar from './InputBar';
 
 class App extends Component {
   constructor(props) {
@@ -8,6 +9,16 @@ class App extends Component {
       displayNumber: '',
     };
     this.buttonClick = this.handleClick.bind(this);
+    this.update = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    console.log('value', e.target.value);
+    const codeToEvaluate = e.target.value.charCodeAt(e.target.value.length - 1);
+    // 48 - 57 on charCodeAt is 0 - 9
+    if (codeToEvaluate >= 48 && codeToEvaluate <= 57 || e.target.value === '') {
+      this.setState({displayNumber:e.target.value});
+    }
   }
 
   handleClick(val) {
@@ -21,7 +32,8 @@ class App extends Component {
   render() {
     return (
       <div className="calc-container" >
-        <ButtonContainer handleClick={this.buttonClick}/>
+        <InputBar display={this.state.displayNumber} update={this.update} />
+        <ButtonContainer handleClick={this.buttonClick} />
       </div>
     );
   }
