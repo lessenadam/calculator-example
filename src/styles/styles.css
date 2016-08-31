@@ -3,14 +3,31 @@
 }
 
 td {
-  font-size: 1.5em; /* 21/14 = 1.5em */
+  font-size: 2.8em; /* 39.2/14 = 2.8em */
   height: 100px;
   /*padding: 10px 15px;*/
   vertical-align: middle;
   text-align: center;
-  border-bottom: 1px solid #cecfd5;
-  border-right: 1px solid #cecfd5;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  background-color: #DCDCDC;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 200;
+
 }
 td:first-child {
-  border-left: 1px solid #cecfd5;
+  border-left: 1px solid black;
+}
+
+td:last-child {
+  background-color: #FF8C00;
+  color: white;
+}
+
+.no-right-border {
+  border-right: 0;
+}
+
+.large {
+  font-weight: bolder;
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-const InputButton = (props) => (
-  <td>
-    {props.value}
+const InputButton = ({ value, handleClick, styles }) => (
+  <td className={styles} onClick={() => handleClick(value)}>
+    {value}
   </td>
 );
 
