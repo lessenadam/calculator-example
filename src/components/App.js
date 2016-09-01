@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import ButtonContainer from './ButtonContainer';
 import InputBar from './InputBar';
 
+const addComma = (string) => {
+  if (string.length <= 3) {
+    return string;
+  } else {
+    return addComma(string.slice(0, string.length - 3)) + ',' + string.slice(string.length - 3);
+  }
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +25,9 @@ class App extends Component {
     const codeToEvaluate = e.target.value.charCodeAt(e.target.value.length - 1);
     // 48 - 57 on charCodeAt is 0 - 9
     if (codeToEvaluate >= 48 && codeToEvaluate <= 57 || e.target.value === '') {
-      this.setState({displayNumber:e.target.value});
+      const commasRemoved = e.target.value.split(',').join('');
+      const updatedDisplay = addComma(commasRemoved);
+      this.setState({displayNumber:updatedDisplay});
     }
   }
 

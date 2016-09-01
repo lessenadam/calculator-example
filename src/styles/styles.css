@@ -1,22 +1,24 @@
 .calc-container {
   width: 400px;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .display {
   background-color: black;
   color: white;
-  padding-right: 20px;
+  padding-right: 30px;
   height: 100px;
 }
 
 #input-display {
   text-align: right;
-  font-size: 2em;
+  font-size: 3.8em; /* 53.2 / 14 = 3.8em */
   border-bottom:none;
   box-shadow:none;
   margin-bottom: 0;
   height: 80px;
   padding-top: 20px;
+  font-weight: 200;
 }
 
 td {
@@ -28,7 +30,6 @@ td {
   border-bottom: 1px solid black;
   border-right: 1px solid black;
   background-color: #DCDCDC;
-  font-family: 'Work Sans', sans-serif;
   font-weight: 300;
 
 }
