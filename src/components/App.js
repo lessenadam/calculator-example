@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ButtonContainer from './ButtonContainer';
+import ButtonTable from './ButtonTable';
 import InputBar from './InputBar';
 import PastTable from './PastTable';
 
@@ -146,11 +146,12 @@ class App extends Component {
       <div className="container outer-app">
         <div className="calc-container" >
           <InputBar display={this.state.displayNumber} update={this.update} />
-          <ButtonContainer
+          <ButtonTable
             handleClick={this.buttonClick}
             clear={this.clear}
             operate={this.operate}
             equals={this.equals}
+            selected={this.state.operator}
           />
         </div>
         <div className="past-container">
