@@ -1,7 +1,7 @@
 import React from 'react';
 import InputButton from './InputButton';
 
-const ButtonContainer = ({ handleClick, clear }) => (
+const ButtonContainer = ({ handleClick, clear, operate }) => (
       <div>
         <table>
           <tBody>
@@ -9,25 +9,25 @@ const ButtonContainer = ({ handleClick, clear }) => (
               <InputButton handleClick={clear} value="C"/>
               <InputButton value="&plusmn;"/>
               <InputButton value="%"/>
-              <InputButton value="&divide;"/>
+              <InputButton handleClick={operate} value="&divide;"/>
             </tr>
             <tr>
               <InputButton handleClick={handleClick} value="7" />
               <InputButton handleClick={handleClick} value="8" />
               <InputButton handleClick={handleClick} value="9" />
-              <InputButton handleClick={handleClick} value="&times;"/>
+              <InputButton handleClick={operate} value="&times;"/>
             </tr>
             <tr>
               <InputButton handleClick={handleClick} value="4" />
               <InputButton handleClick={handleClick} value="5" />
               <InputButton handleClick={handleClick} value="6" />
-              <InputButton handleClick={handleClick} value="&minus;"/>
+              <InputButton handleClick={operate} value="&minus;"/>
             </tr>
             <tr>
               <InputButton handleClick={handleClick} value="1" />
               <InputButton handleClick={handleClick} value="2" />
               <InputButton handleClick={handleClick} value="3" />
-              <InputButton handleClick={handleClick} value="+"/>
+              <InputButton handleClick={operate} value="+"/>
             </tr>
             <tr>
               <InputButton handleClick={handleClick} value="0" styles="no-right-border"/>
