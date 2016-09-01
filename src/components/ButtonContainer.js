@@ -1,15 +1,15 @@
 import React from 'react';
 import InputButton from './InputButton';
 
-const ButtonContainer = ({ handleClick }) => (
+const ButtonContainer = ({ handleClick, clear }) => (
       <div>
         <table>
           <tBody>
             <tr>
-              <InputButton handleClick={handleClick} value="C"/>
-              <InputButton handleClick={handleClick} value="&plusmn;"/>
-              <InputButton handleClick={handleClick} value="%"/>
-              <InputButton handleClick={handleClick} value="&divide;"/>
+              <InputButton handleClick={clear} value="C"/>
+              <InputButton value="&plusmn;"/>
+              <InputButton value="%"/>
+              <InputButton value="&divide;"/>
             </tr>
             <tr>
               <InputButton handleClick={handleClick} value="7" />

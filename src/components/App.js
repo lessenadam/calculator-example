@@ -18,6 +18,11 @@ class App extends Component {
     };
     this.buttonClick = this.handleClick.bind(this);
     this.update = this.handleChange.bind(this);
+    this.clear = this.clearDispay.bind(this);
+  }
+
+  clearDispay() {
+    this.setState({displayNumber:''});
   }
 
   handleChange(e) {
@@ -35,15 +40,16 @@ class App extends Component {
     if (val === '') {
       val = '0';
     }
-    console.log('this is: ', this);
-    console.log('val is: ', val);
+    let current = this.state.displayNumber.split(',').join('');
+    const updatedDisplay = addComma(current += val);
+    this.setState({displayNumber:updatedDisplay});
   }
 
   render() {
     return (
       <div className="calc-container" >
         <InputBar display={this.state.displayNumber} update={this.update} />
-        <ButtonContainer handleClick={this.buttonClick} />
+        <ButtonContainer handleClick={this.buttonClick} clear={this.clear} />
       </div>
     );
   }

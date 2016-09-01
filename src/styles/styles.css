@@ -40,6 +40,8 @@ td:first-child {
 td:last-child {
   background-color: #FF8C00;
   color: white;
+  font-size: 4em;
+  font-weight: 200;
 }
 
 .no-right-border {
