@@ -1,9 +1,9 @@
 import React from 'react';
 import InputButton from './InputButton';
 
-const ButtonContainer = ({ handleClick, clear, operate }) => (
+const ButtonContainer = ({ handleClick, clear, operate, equals }) => (
       <div>
-        <table>
+        <table className="calc-table">
           <tBody>
             <tr>
               <InputButton handleClick={clear} value="C"/>
@@ -33,7 +33,7 @@ const ButtonContainer = ({ handleClick, clear, operate }) => (
               <InputButton handleClick={handleClick} value="0" styles="no-right-border"/>
               <InputButton handleClick={handleClick} value="" />
               <InputButton handleClick={handleClick} value="." styles="large"/>
-              <InputButton handleClick={handleClick} value="="/>
+              <InputButton handleClick={equals} value="="/>
             </tr>
           </tBody>
         </table>

@@ -1,6 +1,18 @@
 .calc-container {
+  float: left;
   width: 400px;
   font-family: 'Work Sans', sans-serif;
+}
+
+.past-container {
+  float: right;
+  width: 450px;
+  position: relative;
+  right: 200px;
+}
+
+.container{
+  margin-top: 100px;
 }
 
 .display {
@@ -21,7 +33,7 @@
   font-weight: 200;
 }
 
-td {
+table.calc-table td {
   font-size: 2.8em; /* 39.2/14 = 2.8em */
   height: 100px;
   padding: 10px 25px;
@@ -33,11 +45,11 @@ td {
   font-weight: 300;
 
 }
-td:first-child {
+table.calc-table td:first-child {
   border-left: 1px solid black;
 }
 
-td:last-child {
+table.calc-table td:last-child {
   background-color: #FF8C00;
   color: white;
   font-size: 4em;
