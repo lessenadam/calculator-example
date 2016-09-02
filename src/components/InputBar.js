@@ -1,15 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const InputBar = ({ display, update }) => (
-  <div className="display" >
-    <input
-      id="input-display"
-      type="text"
-      value={display}
-      onChange={update}
-    />
-  </div>
-);
+class InputBar extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.textInput.focus();
+  }
+
+  componentDidUpdate() {
+    this.textInput.focus();
+  }
+
+  render() {
+    return (
+      <div className="display" >
+        <input
+          id="input-display"
+          type="text"
+          value={this.props.display}
+          onChange={this.props.update}
+          ref={(thisInput) => {
+            this.textInput = thisInput;
+          }}
+        />
+      </div>
+    );
+  }
+}
 
 InputBar.defaultProps = {
   display: React.PropTypes.string,
