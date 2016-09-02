@@ -9,7 +9,10 @@ const InputButton = ({ value, handleClick, styles, selected }) => (
 );
 
 InputButton.defaultProps = {
-
+  value: React.PropTypes.string,
+  handleClick: React.PropTypes.func,
+  styles: React.PropTypes.string,
+  selected: React.PropTypes.string,
 };
 
 export default InputButton;

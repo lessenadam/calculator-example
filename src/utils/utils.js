@@ -1,0 +1,59 @@
+export const addComma = (string) => {
+  console.log('Addcomma! String was', string);
+  let decimal = '';
+  const decIndex = string.indexOf('.');
+  if (decIndex !== -1) {
+    console.log('index found', decIndex);
+    decimal = string.slice(decIndex);
+    string = string.slice(0, decIndex);
+  }
+  console.log('decimal', decimal);
+  if (string.length <= 3) {
+    return (string + decimal);
+  } else {
+    return addComma(string.slice(0, string.length - 3)) + ',' + string.slice(string.length - 3) + decimal;
+  }
+};
+
+export const convertToNumber = (string) => {
+  let base = string;
+  let decimal = undefined;
+  const decIndex = string.indexOf('.');
+  if (decIndex !== -1) {
+    decimal = string.slice(decIndex + 1);
+    base = string.slice(0, decIndex);
+  }
+  base = parseInt(base.split(',').join(''), 10);
+  if (decimal) {
+    base += parseInt(decimal, 10) / (Math.pow(10, decimal.length));
+  }
+  return base;
+};
+
+export const operators = {
+  TIMES: 215,
+  ADD: 43,
+  DIVIDE: 247,
+  MINUS: 8722,
+};
+
+export const calculate = (steps, currentTotal) => {
+  while (steps.length > 0) {
+    const operator = steps.shift();
+    const nextVal = convertToNumber(steps.shift());
+    switch (operator.charCodeAt(0)) {
+      case operators.TIMES:
+        currentTotal = currentTotal * nextVal;
+        break;
+      case operators.ADD:
+        currentTotal += nextVal;
+        break;
+      case operators.DIVIDE:
+        currentTotal = currentTotal / nextVal;
+        break;
+      case operators.MINUS:
+        currentTotal -= nextVal;
+    }
+  }
+  return currentTotal;
+}

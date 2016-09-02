@@ -2,21 +2,9 @@ import React, { Component } from 'react';
 import ButtonTable from './ButtonTable';
 import InputBar from './InputBar';
 import PastTable from './PastTable';
+import { addComma, convertToNumber, calculate } from '../utils/utils';
 
-const addComma = (string) => {
-  if (string.length <= 3) {
-    return string;
-  } else {
-    return addComma(string.slice(0, string.length - 3)) + ',' + string.slice(string.length - 3);
-  }
-};
-
-const operators = {
-  TIMES: 215,
-  ADD: 43,
-  DIVIDE: 247,
-  MINUS: 8722,
-};
+const maxLength = 14; // set truncate threshold for calculator display
 
 class App extends Component {
   constructor(props) {
@@ -34,42 +22,27 @@ class App extends Component {
     this.equals = this.solveEquation.bind(this);
   }
 
-  solveEquation() {
-    const steps = this.state.history.concat(this.state.displayNumber);
-    const copyHistory = steps.slice().join(' ');
-    let currentTotal = parseInt(steps.shift().split(',').join(''), 10);
-    while (steps.length > 0) {
-      const operator = steps.shift();
-      const nextVal = parseInt(steps.shift().split(',').join(''), 10);
-      switch (operator.charCodeAt(0)) {
-        case operators.TIMES:
-          currentTotal = currentTotal * nextVal;
-          break;
-        case operators.ADD:
-          currentTotal += nextVal;
-          break;
-        case operators.DIVIDE:
-          currentTotal = currentTotal / nextVal;
-          break;
-        case operators.MINUS:
-          currentTotal -= nextVal;
-      }
-    }
-    this.clearAll()
-      .then(() =>
-        this.setState({
-          displayNumber: addComma(currentTotal.toString()),
-          past: this.state.past.concat([[copyHistory, addComma(currentTotal.toString())]]),
-        })
-      );
-  }
-
   setOperator(val) {
     const operator = val;
-    console.log('clickedOperator!', operator);
     if (this.state.displayNumber.length > 0) {
       this.setState({ operator });
     }
+  }
+
+  solveEquation() {
+    const steps = this.state.history.concat(this.state.displayNumber);
+    const copyHistory = steps.slice().join(' ');
+    let currentTotal = convertToNumber(steps.shift());
+    currentTotal = calculate(steps, currentTotal);
+
+    this.clearAll()
+      .then(() => {
+        const resultToDisplay = addComma(currentTotal.toString()).slice(0,maxLength);
+        this.setState({
+          displayNumber: resultToDisplay,
+          past: this.state.past.concat([[copyHistory, resultToDisplay]]),
+        });
+      });
   }
 
   clearAll() {
@@ -77,7 +50,7 @@ class App extends Component {
       this.setState({ displayNumber: '', operator: '', history: [] }, () => {
         resolve();
       });
-    }); 
+    });
   }
 
   clearDisplay() {
@@ -91,7 +64,6 @@ class App extends Component {
   handleChange(e) {
     // handle case when operator is selected
     if (this.state.operator.length > 0) {
-      console.log('update??');
       const updatedHistory = this.state.history
                               .concat([
                                 this.state.displayNumber,
@@ -101,20 +73,18 @@ class App extends Component {
       this.clearDisplay();
       e.target.value = e.target.value[e.target.value.length - 1];
     }
-    console.log('value', e.target.value);
     const codeToEvaluate = e.target.value.charCodeAt(e.target.value.length - 1);
-    // 48 - 57 on charCodeAt is 0 - 9
+    // validadation that key pressed is 0 - 9, otherwise don't update state
     if (codeToEvaluate >= 48 && codeToEvaluate <= 57 || e.target.value === '') {
       const commasRemoved = e.target.value.split(',').join('');
-      const updatedDisplay = addComma(commasRemoved);
-      this.setState({displayNumber:updatedDisplay});
+      const updatedDisplay = addComma(commasRemoved).slice(0, maxLength);
+      this.setState({ displayNumber: updatedDisplay });
     }
   }
 
   handleClick(val) {
     // handle case when operator is selected
     if (this.state.operator.length > 0) {
-      console.log('update??');
       const updatedHistory = this.state.history
                               .concat([
                                 this.state.displayNumber,
@@ -127,8 +97,8 @@ class App extends Component {
             val = '0';
           }
           let current = this.state.displayNumber.split(',').join('');
-          const updatedDisplay = addComma(current += val);
-          this.setState({displayNumber:updatedDisplay});
+          const updatedDisplay = addComma(current += val).slice(0, maxLength);
+          this.setState({ displayNumber: updatedDisplay });
         })
         .catch((err) => console.log(err));
     } else {
@@ -136,14 +106,14 @@ class App extends Component {
         val = '0';
       }
       let current = this.state.displayNumber.split(',').join('');
-      const updatedDisplay = addComma(current += val);
-      this.setState({displayNumber:updatedDisplay});
+      const updatedDisplay = addComma(current += val).slice(0, maxLength);
+      this.setState({ displayNumber: updatedDisplay });
     }
   }
 
   render() {
     return (
-      <div className="container outer-app">
+      <div className="container">
         <div className="calc-container" >
           <InputBar display={this.state.displayNumber} update={this.update} />
           <ButtonTable
@@ -163,7 +133,6 @@ class App extends Component {
 }
 
 App.defaultProps = {
-  
 };
 
 export default App ;

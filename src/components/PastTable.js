@@ -3,7 +3,6 @@ import EqRow from './EqRow';
 
 const PastTable = ({ past }) => {
   const rows = [];
-  console.log(past);
   past.forEach(previous =>
     rows.push(<EqRow eq={previous[0]} result={previous[1]} />)
   );
@@ -23,7 +22,7 @@ const PastTable = ({ past }) => {
 };
 
 PastTable.defaultProps = {
-  
+  past: React.PropTypes.array,
 };
 
 export default PastTable;

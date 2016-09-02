@@ -8,7 +8,8 @@ const EqRow = ({ eq, result }) => (
 );
 
 EqRow.defaultProps = {
-  
+  eq: React.PropTypes.string,
+  result: React.PropTypes.string,
 };
 
 export default EqRow ;

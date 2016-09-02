@@ -12,7 +12,8 @@ const InputBar = ({ display, update }) => (
 );
 
 InputBar.defaultProps = {
-  
+  display: React.PropTypes.string,
+  update: React.PropTypes.func,
 };
 
 export default InputBar;
