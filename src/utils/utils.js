@@ -1,13 +1,10 @@
 export const addComma = (string) => {
-  console.log('Addcomma! String was', string);
   let decimal = '';
   const decIndex = string.indexOf('.');
   if (decIndex !== -1) {
-    console.log('index found', decIndex);
     decimal = string.slice(decIndex);
     string = string.slice(0, decIndex);
   }
-  console.log('decimal', decimal);
   if (string.length <= 3) {
     return (string + decimal);
   } else {

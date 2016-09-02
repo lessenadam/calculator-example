@@ -115,7 +115,10 @@ class App extends Component {
     return (
       <div className="container">
         <div className="calc-container" >
-          <InputBar display={this.state.displayNumber} update={this.update} />
+          <InputBar
+            display={this.state.displayNumber}
+            update={this.update}
+          />
           <ButtonTable
             handleClick={this.buttonClick}
             clear={this.clear}
