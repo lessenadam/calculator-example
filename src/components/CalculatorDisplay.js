@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class InputBar extends Component {
+class CalculatorDisplay extends Component {
   constructor(props) {
     super(props);
   }
@@ -21,6 +21,7 @@ class InputBar extends Component {
           type="text"
           value={this.props.display}
           onChange={this.props.update}
+          onKeyPress={this.props.detect}
           ref={(thisInput) => {
             this.textInput = thisInput;
           }}
@@ -30,9 +31,10 @@ class InputBar extends Component {
   }
 }
 
-InputBar.defaultProps = {
+CalculatorDisplay.defaultProps = {
   display: React.PropTypes.string,
   update: React.PropTypes.func,
+  detect: React.PropTypes.func,
 };
 
-export default InputBar;
+export default CalculatorDisplay;

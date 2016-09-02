@@ -1,39 +1,39 @@
 import React from 'react';
-import InputButton from './InputButton';
+import ButtonInput from './ButtonInput';
 
 const ButtonTable = ({ handleClick, clear, operate, equals, selected }) => (
   <div>
     <table className="calc-table">
       <tBody>
         <tr>
-          <InputButton handleClick={clear} value="C" />
-          <InputButton value="&plusmn;" />
-          <InputButton value="%" />
-          <InputButton handleClick={operate} selected={selected} value="&divide;" />
+          <ButtonInput handleClick={clear} value="C" />
+          <ButtonInput value="&plusmn;" />
+          <ButtonInput value="%" />
+          <ButtonInput handleClick={operate} selected={selected} value="&divide;" />
         </tr>
         <tr>
-          <InputButton handleClick={handleClick} value="7" />
-          <InputButton handleClick={handleClick} value="8" />
-          <InputButton handleClick={handleClick} value="9" />
-          <InputButton handleClick={operate} selected={selected} value="&times;"/>
+          <ButtonInput handleClick={handleClick} value="7" />
+          <ButtonInput handleClick={handleClick} value="8" />
+          <ButtonInput handleClick={handleClick} value="9" />
+          <ButtonInput handleClick={operate} selected={selected} value="&times;"/>
         </tr>
         <tr>
-          <InputButton handleClick={handleClick} value="4" />
-          <InputButton handleClick={handleClick} value="5" />
-          <InputButton handleClick={handleClick} value="6" />
-          <InputButton handleClick={operate} selected={selected} value="&minus;" />
+          <ButtonInput handleClick={handleClick} value="4" />
+          <ButtonInput handleClick={handleClick} value="5" />
+          <ButtonInput handleClick={handleClick} value="6" />
+          <ButtonInput handleClick={operate} selected={selected} value="&minus;" />
         </tr>
         <tr>
-          <InputButton handleClick={handleClick} value="1" />
-          <InputButton handleClick={handleClick} value="2" />
-          <InputButton handleClick={handleClick} value="3" />
-          <InputButton handleClick={operate} selected={selected} value="+" />
+          <ButtonInput handleClick={handleClick} value="1" />
+          <ButtonInput handleClick={handleClick} value="2" />
+          <ButtonInput handleClick={handleClick} value="3" />
+          <ButtonInput handleClick={operate} selected={selected} value="+" />
         </tr>
         <tr>
-          <InputButton handleClick={handleClick} value="0" styles="no-right-border" />
-          <InputButton handleClick={handleClick} value="" />
-          <InputButton handleClick={handleClick} value="." styles="large" />
-          <InputButton handleClick={equals} value="=" />
+          <ButtonInput handleClick={handleClick} value="0" styles="no-right-border" />
+          <ButtonInput handleClick={handleClick} value="" />
+          <ButtonInput handleClick={handleClick} value="." styles="large" />
+          <ButtonInput handleClick={equals} value="=" />
         </tr>
       </tBody>
     </table>

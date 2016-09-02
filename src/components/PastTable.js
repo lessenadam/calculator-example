@@ -1,10 +1,10 @@
 import React from 'react';
-import EqRow from './EqRow';
+import PastCalculation from './PastCalculation';
 
-const PastTable = ({ past }) => {
+const PastTable = ({ past, revert }) => {
   const rows = [];
-  past.forEach(previous =>
-    rows.push(<EqRow eq={previous[0]} result={previous[1]} />)
+  past.forEach((previous, index) =>
+    rows.push(<PastCalculation key={index} eq={previous[0]} result={previous[1]} revert={revert} />)
   );
   return (
     <div>

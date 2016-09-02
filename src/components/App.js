@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ButtonTable from './ButtonTable';
-import InputBar from './InputBar';
+import CalculatorDisplay from './CalculatorDisplay';
 import PastTable from './PastTable';
 import { addComma, convertToNumber, calculate } from '../utils/utils';
 
@@ -16,17 +16,24 @@ class App extends Component {
       past: [],
     };
     this.buttonClick = this.handleClick.bind(this);
-    this.update = this.handleChange.bind(this);
+    this.update = this.handleKeyPress.bind(this);
     this.clear = this.clearAll.bind(this);
     this.operate = this.setOperator.bind(this);
     this.equals = this.solveEquation.bind(this);
+    this.revert = this.revertToPast.bind(this);
+    this.detect = this.detectEnter.bind(this);
   }
+
 
   setOperator(val) {
     const operator = val;
     if (this.state.displayNumber.length > 0) {
       this.setState({ operator });
     }
+  }
+
+  revertToPast(result) {
+    this.setState({ displayNumber: result });
   }
 
   solveEquation() {
@@ -61,7 +68,13 @@ class App extends Component {
     });
   }
 
-  handleChange(e) {
+  detectEnter(e) {
+    if (e.key === 'Enter') {
+      this.solveEquation();
+    }
+  }
+
+  handleKeyPress(e) {
     // handle case when operator is selected
     if (this.state.operator.length > 0) {
       const updatedHistory = this.state.history
@@ -115,9 +128,10 @@ class App extends Component {
     return (
       <div className="container">
         <div className="calc-container" >
-          <InputBar
+          <CalculatorDisplay
             display={this.state.displayNumber}
             update={this.update}
+            detect={this.detect}
           />
           <ButtonTable
             handleClick={this.buttonClick}
@@ -128,7 +142,7 @@ class App extends Component {
           />
         </div>
         <div className="past-container">
-          <PastTable past={this.state.past} />
+          <PastTable past={this.state.past} revert={this.revert} />
         </div>
       </div>
     );
