@@ -4,7 +4,8 @@ import CalculatorDisplay from './CalculatorDisplay';
 import PastTable from './PastTable';
 import { addComma, convertToNumber, calculate } from '../utils/utils';
 
-const maxLength = 14; // set truncate threshold for calculator display
+// set truncate threshold for calculator display
+const maxLength = 14; 
 
 class App extends Component {
   constructor(props) {
@@ -15,6 +16,8 @@ class App extends Component {
       history: [],
       past: [],
     };
+
+    // bind the event handlers passed to children components
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.clearAll = this.clearAll.bind(this);
@@ -32,6 +35,7 @@ class App extends Component {
     }
   }
 
+  // resets display to a previous calculated number
   revertToPast(result) {
     this.setState({ displayNumber: result });
   }
@@ -75,7 +79,7 @@ class App extends Component {
   }
 
   handleKeyPress(e) {
-    // handle case when operator is selected
+    // handle case when operator is already selected
     if (this.state.operator.length > 0) {
       const updatedHistory = this.state.history
                               .concat([
@@ -87,6 +91,7 @@ class App extends Component {
       e.target.value = e.target.value[e.target.value.length - 1];
     }
     const codeToEvaluate = e.target.value.charCodeAt(e.target.value.length - 1);
+
     // validadation that key pressed is 0 - 9, otherwise don't update state
     if (codeToEvaluate >= 48 && codeToEvaluate <= 57 || e.target.value === '') {
       const commasRemoved = e.target.value.split(',').join('');
@@ -96,7 +101,7 @@ class App extends Component {
   }
 
   handleClick(val) {
-    // handle case when operator is selected
+    // handle case when operator is already selected
     if (this.state.operator.length > 0) {
       const updatedHistory = this.state.history
                               .concat([
