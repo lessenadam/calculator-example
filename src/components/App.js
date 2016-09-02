@@ -15,13 +15,13 @@ class App extends Component {
       history: [],
       past: [],
     };
-    this.buttonClick = this.handleClick.bind(this);
-    this.update = this.handleKeyPress.bind(this);
-    this.clear = this.clearAll.bind(this);
-    this.operate = this.setOperator.bind(this);
-    this.equals = this.solveEquation.bind(this);
-    this.revert = this.revertToPast.bind(this);
-    this.detect = this.detectEnter.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.clearAll = this.clearAll.bind(this);
+    this.setOperator = this.setOperator.bind(this);
+    this.solveEquation = this.solveEquation.bind(this);
+    this.revertToPast = this.revertToPast.bind(this);
+    this.detectEnter = this.detectEnter.bind(this);
   }
 
 
@@ -130,19 +130,19 @@ class App extends Component {
         <div className="calc-container" >
           <CalculatorDisplay
             display={this.state.displayNumber}
-            update={this.update}
-            detect={this.detect}
+            update={this.handleKeyPress}
+            detect={this.detectEnter}
           />
           <ButtonTable
-            handleClick={this.buttonClick}
-            clear={this.clear}
-            operate={this.operate}
-            equals={this.equals}
+            handleClick={this.handleClick}
+            clear={this.clearAll}
+            operate={this.setOperator}
+            equals={this.solveEquation}
             selected={this.state.operator}
           />
         </div>
         <div className="past-container">
-          <PastTable past={this.state.past} revert={this.revert} />
+          <PastTable past={this.state.past} revert={this.revertToPast} />
         </div>
       </div>
     );
