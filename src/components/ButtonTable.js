@@ -40,7 +40,7 @@ const ButtonTable = ({ handleClick, clear, operate, equals, selected }) => (
   </div>
 );
 
-ButtonTable.defaultProps = {
+ButtonTable.propTypes = {
   handleClick: React.PropTypes.func,
   clear: React.PropTypes.func,
   operate: React.PropTypes.func,

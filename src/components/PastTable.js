@@ -23,8 +23,9 @@ const PastTable = ({ past, revert }) => {
   );
 };
 
-PastTable.defaultProps = {
+PastTable.propTypes = {
   past: React.PropTypes.array,
+  revert: React.PropTypes.func,
 };
 
 export default PastTable;

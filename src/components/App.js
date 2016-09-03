@@ -5,7 +5,7 @@ import PastTable from './PastTable';
 import { addComma, convertToNumber, calculate } from '../utils/utils';
 
 // set truncate threshold for calculator display
-const maxLength = 14; 
+const maxLength = 14;
 
 class App extends Component {
   constructor(props) {
@@ -154,7 +154,7 @@ class App extends Component {
   }
 }
 
-App.defaultProps = {
+App.propTypes = {
 };
 
 export default App ;

@@ -35,20 +35,21 @@ export const operators = {
 };
 
 export const calculate = (steps, currentTotal) => {
+  const { TIMES, ADD, DIVIDE, MINUS } = operators;
   while (steps.length > 0) {
     const operator = steps.shift();
     const nextVal = convertToNumber(steps.shift());
     switch (operator.charCodeAt(0)) {
-      case operators.TIMES:
+      case TIMES:
         currentTotal = currentTotal * nextVal;
         break;
-      case operators.ADD:
+      case ADD:
         currentTotal += nextVal;
         break;
-      case operators.DIVIDE:
+      case DIVIDE:
         currentTotal = currentTotal / nextVal;
         break;
-      case operators.MINUS:
+      case MINUS:
         currentTotal -= nextVal;
     }
   }

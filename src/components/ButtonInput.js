@@ -12,7 +12,7 @@ const ButtonInput = ({ value, handleClick, styles, selected }) => (
   </td>
 );
 
-ButtonInput.defaultProps = {
+ButtonInput.propTypes = {
   value: React.PropTypes.string,
   handleClick: React.PropTypes.func,
   styles: React.PropTypes.string,

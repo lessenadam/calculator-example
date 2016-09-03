@@ -7,7 +7,7 @@ const PastCalculation = ({ eq, result, revert }) => (
   </tr>
 );
 
-PastCalculation.defaultProps = {
+PastCalculation.propTypes = {
   eq: React.PropTypes.string,
   result: React.PropTypes.string,
   revert: React.PropTypes.func,

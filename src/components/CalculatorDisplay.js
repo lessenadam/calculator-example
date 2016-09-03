@@ -31,7 +31,7 @@ class CalculatorDisplay extends Component {
   }
 }
 
-CalculatorDisplay.defaultProps = {
+CalculatorDisplay.propTypes = {
   display: React.PropTypes.string,
   update: React.PropTypes.func,
   detect: React.PropTypes.func,
