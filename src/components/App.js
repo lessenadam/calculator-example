@@ -35,20 +35,25 @@ class App extends Component {
     }
   }
 
-  // resets display to a previous calculated number
+  // resets display to a previously calculated number
   revertToPast(result) {
     this.setState({ displayNumber: result });
   }
 
   solveEquation() {
+    // add the currently displayed number to the expression
     const steps = this.state.history.concat(this.state.displayNumber);
+
+    // grab a copy of the expression to append to history
     const copyHistory = steps.slice().join(' ');
+
     let currentTotal = convertToNumber(steps.shift());
     currentTotal = calculate(steps, currentTotal);
 
+    // display the result on the calculor and push expression to history
     this.clearAll()
       .then(() => {
-        const resultToDisplay = addComma(currentTotal.toString()).slice(0,maxLength);
+        const resultToDisplay = addComma(currentTotal.toString()).slice(0, maxLength);
         this.setState({
           displayNumber: resultToDisplay,
           past: this.state.past.concat([[copyHistory, resultToDisplay]]),
